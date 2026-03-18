@@ -132,21 +132,21 @@ export function watchEffect(
     }
   }
   
-  const scheduler = options.flush === 'sync' 
-    ? run 
-    : () => Promise.resolve().then(run)
-  
   const run = () => {
     executeCleanup()
     _effect.run()
   }
+  
+  const scheduler = options.flush === 'sync' 
+    ? run 
+    : () => Promise.resolve().then(run)
   
   const _effect = new ReactiveEffect(
     () => effectFn(onCleanup),
     { scheduler }
   )
   
-  _effect.run()
+  run()
   
   return () => {
     _effect.stop?.()

@@ -27,7 +27,7 @@ import { ref } from 'vue'
 import CodeBlock from '@/components/common/CodeBlock.vue'
 
 const xssTypes = ref([
-  { type: '反射型', source: 'URL参数', desc: '恶意代码通过URL注入', example: '?name=<script>alert(1)</script>' },
+  { type: '反射型', source: 'URL参数', desc: '恶意代码通过URL注入', example: '?name=<scr' + 'ipt>alert(1)</scr' + 'ipt>' },
   { type: '存储型', source: '数据库', desc: '恶意代码存储在服务器', example: '评论中注入脚本' },
   { type: 'DOM型', source: '客户端', desc: 'JS动态操作DOM时注入', example: 'location.hash 插入页面' }
 ])
