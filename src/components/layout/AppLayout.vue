@@ -38,7 +38,7 @@
           />
           <el-tooltip content="GitHub" placement="bottom">
             <a href="https://github.com/suwei888/vuecraft" target="_blank" class="github-link">
-              <el-icon class="header-icon"><Link /></el-icon>
+              <GithubIcon class="header-icon" :size="20" />
             </a>
           </el-tooltip>
         </div>
@@ -56,6 +56,7 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SideMenu from './SideMenu.vue'
+import GithubIcon from '@/components/icons/GithubIcon.vue'
 
 const route = useRoute()
 const isCollapsed = ref(false)
