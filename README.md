@@ -35,7 +35,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/vuecraft.git
+git clone https://github.com/suwei888/vuecraft.git
 
 # 进入目录
 cd vuecraft
