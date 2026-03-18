@@ -37,7 +37,9 @@
             style="width: 200px"
           />
           <el-tooltip content="GitHub" placement="bottom">
-            <el-icon class="header-icon"><Link /></el-icon>
+            <a href="https://github.com/suwei888/vuecraft" target="_blank" class="github-link">
+              <el-icon class="header-icon"><Link /></el-icon>
+            </a>
           </el-tooltip>
         </div>
       </el-header>
@@ -163,6 +165,12 @@ watch(() => route.path, () => {
     display: flex;
     align-items: center;
     gap: 16px;
+    
+    .github-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
     
     .header-icon {
       font-size: 20px;
