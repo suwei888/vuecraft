@@ -3,6 +3,12 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    name: 'Landing',
+    component: () => import('@/views/Landing.vue'),
+    meta: { title: 'VueCraft - Secure Crypto Trading', icon: 'TrendCharts', noLayout: true }
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: () => import('@/views/Home.vue'),
     meta: { title: '首页', icon: 'HomeFilled' }

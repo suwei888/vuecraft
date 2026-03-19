@@ -11,21 +11,27 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "pinia": "^2.1.7",
+    "@element-plus/icons-vue": "^2.3.1",
+    "@tsparticles/slim": "^3.9.1",
+    "@tsparticles/vue3": "^3.0.1",
+    "@vueuse/core": "^14.2.1",
+    "@vueuse/motion": "^3.0.3",
     "element-plus": "^2.6.1",
-    "@element-plus/icons-vue": "^2.3.1"
+    "pinia": "^2.1.7",
+    "tsparticles": "^3.9.1",
+    "vue": "^3.4.21",
+    "vue-i18n": "^11.3.0",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/prismjs": "^1.26.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "vite": "^5.1.6",
-    "typescript": "^5.4.2",
-    "vue-tsc": "^2.0.6",
-    "sass": "^1.71.1",
-    "@types/node": "^20.11.24",
     "prismjs": "^1.29.0",
-    "@types/prismjs": "^1.26.3"
+    "sass": "^1.71.1",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vue-tsc": "^2.0.6"
   }
 }

@@ -15,6 +15,20 @@ html, body, #app {
   background-color: $bg-page;
 }
 
+// Element Plus 暗色模式全局覆盖
+.el-dialog__wrapper {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.el-dialog {
+  background-color: rgba(15, 15, 25, 0.98) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.el-overlay {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
 // 滚动条样式
 ::-webkit-scrollbar {
   width: 6px;
