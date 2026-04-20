@@ -1,0 +1,133 @@
+<svg width="1440" height="760" viewBox="0 0 1440 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="0" y="0" width="1440" height="760" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feOffset dy="10"/>
+      <feGaussianBlur stdDeviation="18"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.06 0 0 0 0 0.12 0 0 0 0 0.20 0 0 0 0.10 0"/>
+      <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_1_1"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow_1_1" mode="normal" result="shape"/>
+    </filter>
+    <style>
+      .title { font: 700 30px "SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif; fill:#1f2937; }
+      .section { font: 700 18px "SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif; fill:#334155; }
+      .label { font: 600 15px "SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif; fill:#0f172a; }
+      .text { font: 500 13px "SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif; fill:#475569; }
+      .small { font: 500 12px "SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif; fill:#64748b; }
+      .arrow { stroke:#64748b; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      .dash { stroke-dasharray:8 7; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="760" fill="#F8FAFC"/>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="40" width="1320" height="660" rx="28" fill="white"/>
+  </g>
+
+  <text x="100" y="98" class="title">前端学习平台 V1 逻辑架构图</text>
+  <text x="100" y="126" class="small">产品形态：公开门户 + 学习工作台 ｜ 架构策略：模块化单体 + 多租户留白</text>
+
+  <rect x="100" y="170" width="170" height="410" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="185" y="204" text-anchor="middle" class="section">用户与入口</text>
+
+  <rect x="122" y="230" width="126" height="86" rx="20" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+  <text x="185" y="264" text-anchor="middle" class="label">用户</text>
+  <text x="185" y="288" text-anchor="middle" class="text">个人优先</text>
+
+  <rect x="122" y="340" width="126" height="98" rx="20" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="2"/>
+  <text x="185" y="374" text-anchor="middle" class="label">浏览器</text>
+  <text x="185" y="398" text-anchor="middle" class="text">PC / 移动 Web</text>
+  <text x="185" y="420" text-anchor="middle" class="small">后续可扩移动端</text>
+
+  <rect x="122" y="462" width="126" height="92" rx="20" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+  <text x="185" y="496" text-anchor="middle" class="label">接入层</text>
+  <text x="185" y="520" text-anchor="middle" class="text">Nginx / CDN</text>
+  <text x="185" y="542" text-anchor="middle" class="small">静态资源分发</text>
+
+  <rect x="330" y="170" width="340" height="410" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="500" y="204" text-anchor="middle" class="section">前端应用层</text>
+
+  <rect x="358" y="230" width="284" height="118" rx="20" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="2"/>
+  <text x="500" y="265" text-anchor="middle" class="label">公开门户</text>
+  <text x="500" y="290" text-anchor="middle" class="text">价值表达 / 推荐路线 / 精选专题 / 项目入口</text>
+  <text x="500" y="315" text-anchor="middle" class="small">Vue 3 + TypeScript + Vite</text>
+
+  <rect x="358" y="370" width="284" height="118" rx="20" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="2"/>
+  <text x="500" y="405" text-anchor="middle" class="label">学习工作台</text>
+  <text x="500" y="430" text-anchor="middle" class="text">进度 / 收藏 / 笔记 / 项目 / 待复习</text>
+  <text x="500" y="455" text-anchor="middle" class="small">统一设计系统 + 轻量前沿动效</text>
+
+  <rect x="358" y="510" width="284" height="44" rx="14" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+  <text x="500" y="538" text-anchor="middle" class="small">后续预留：内容管理台 / 团队空间 / 企业空间</text>
+
+  <rect x="730" y="170" width="390" height="410" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="925" y="204" text-anchor="middle" class="section">后端模块化单体</text>
+
+  <rect x="760" y="230" width="150" height="58" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+  <text x="835" y="265" text-anchor="middle" class="label">API / BFF</text>
+
+  <rect x="930" y="230" width="160" height="58" rx="16" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="2"/>
+  <text x="1010" y="265" text-anchor="middle" class="label">认证与会话</text>
+
+  <rect x="760" y="306" width="150" height="58" rx="16" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="2"/>
+  <text x="835" y="341" text-anchor="middle" class="label">租户与成员</text>
+
+  <rect x="930" y="306" width="160" height="58" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+  <text x="1010" y="341" text-anchor="middle" class="label">角色权限</text>
+
+  <rect x="760" y="382" width="150" height="58" rx="16" fill="#FEFCE8" stroke="#FDE68A" stroke-width="2"/>
+  <text x="835" y="417" text-anchor="middle" class="label">内容与路线</text>
+
+  <rect x="930" y="382" width="160" height="58" rx="16" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="2"/>
+  <text x="1010" y="417" text-anchor="middle" class="label">学习记录</text>
+
+  <rect x="760" y="458" width="150" height="58" rx="16" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+  <text x="835" y="493" text-anchor="middle" class="label">项目实战</text>
+
+  <rect x="930" y="458" width="160" height="58" rx="16" fill="#FEE2E2" stroke="#FECACA" stroke-width="2"/>
+  <text x="1010" y="493" text-anchor="middle" class="label">审计日志</text>
+
+  <rect x="760" y="534" width="330" height="24" rx="8" fill="#E2E8F0"/>
+  <text x="925" y="551" text-anchor="middle" class="small">后续预留：领域事件 / 异步任务 / Worker / 搜索接入</text>
+
+  <rect x="1180" y="170" width="150" height="410" rx="24" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="1255" y="204" text-anchor="middle" class="section">数据与基础设施</text>
+
+  <rect x="1203" y="230" width="104" height="82" rx="18" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="2"/>
+  <text x="1255" y="264" text-anchor="middle" class="label">PostgreSQL</text>
+  <text x="1255" y="288" text-anchor="middle" class="small">主存储</text>
+
+  <rect x="1203" y="334" width="104" height="82" rx="18" fill="#FEF2F2" stroke="#FECACA" stroke-width="2"/>
+  <text x="1255" y="368" text-anchor="middle" class="label">Redis</text>
+  <text x="1255" y="392" text-anchor="middle" class="small">二阶段接入</text>
+
+  <rect x="1203" y="438" width="104" height="82" rx="18" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+  <text x="1255" y="472" text-anchor="middle" class="label">对象存储</text>
+  <text x="1255" y="496" text-anchor="middle" class="small">附件 / 资源</text>
+
+  <rect x="1203" y="542" width="104" height="24" rx="8" fill="#E2E8F0"/>
+  <text x="1255" y="558" text-anchor="middle" class="small">搜索 / MQ 预留</text>
+
+  <path d="M248 273H310" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M248 389H310" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M248 508H310" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <path d="M642 289H720" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M642 429H720" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M1120 400H1190" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <path d="M910 259H930" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M910 335H930" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M910 411H930" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M910 487H930" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <path d="M1090 259H1203" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M1090 335H1203" class="arrow dash" marker-end="url(#arrowhead)"/>
+  <path d="M1090 411H1203" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M1090 487H1203" class="arrow dash" marker-end="url(#arrowhead)"/>
+
+  <text x="102" y="640" class="small">说明：图中实线表示第一阶段直接落地能力，虚线表示第二阶段以后优先接入的能力。</text>
+</svg>

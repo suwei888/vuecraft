@@ -420,74 +420,7 @@
 
 ### 7.5 V1 逻辑架构图
 
-```mermaid
-flowchart LR
-    user["用户"]
-
-    subgraph access["访问入口"]
-        browser["PC / 移动浏览器"]
-    end
-
-    subgraph edge["接入层"]
-        nginx["Nginx / CDN"]
-    end
-
-    subgraph frontend["前端应用层"]
-        portal["公开门户<br/>Vue 3 + TypeScript + Vite"]
-        workspace["学习工作台<br/>Vue 3 + TypeScript + Vite"]
-        admin["内容管理台<br/>后续预留"]
-    end
-
-    subgraph backend["后端模块化单体"]
-        api["API / BFF"]
-        auth["认证与会话"]
-        tenant["租户与成员"]
-        content["内容与路线"]
-        learning["学习记录"]
-        project["项目实战"]
-        permission["角色权限"]
-        audit["审计日志"]
-        async["异步任务边界<br/>后续预留"]
-    end
-
-    subgraph data["数据与基础设施"]
-        pg["PostgreSQL 17"]
-        redis["Redis<br/>第二阶段可接入"]
-        object["对象存储<br/>后续预留"]
-        search["搜索索引<br/>后续预留"]
-    end
-
-    user --> browser
-    browser --> nginx
-    nginx --> portal
-    nginx --> workspace
-    nginx -. "管理入口" .-> admin
-
-    portal --> api
-    workspace --> api
-    admin -. "后续接入" .-> api
-
-    api --> auth
-    api --> tenant
-    api --> content
-    api --> learning
-    api --> project
-    api --> permission
-    api --> audit
-    api -. "事件 / 定时任务" .-> async
-
-    auth --> pg
-    tenant --> pg
-    content --> pg
-    learning --> pg
-    project --> pg
-    permission --> pg
-    audit --> pg
-
-    learning -. "缓存 / 会话 / 限流" .-> redis
-    content -. "素材 / 附件" .-> object
-    content -. "全文检索" .-> search
-```
+![V1 逻辑架构图](../assets/frontend-learning-v1-logical-architecture.svg)
 
 图示说明：
 
@@ -497,48 +430,7 @@ flowchart LR
 
 ### 7.6 V1 部署与演进留白图
 
-```mermaid
-flowchart TB
-    subgraph client["客户端"]
-        c1["Web 浏览器"]
-        c2["后续：移动端 / 小程序"]
-    end
-
-    subgraph deploy["V1 部署形态"]
-        reverse["Nginx 反向代理"]
-
-        subgraph app["应用容器 / 进程"]
-            fe["前端静态资源"]
-            be["Spring Boot 模块化单体"]
-        end
-
-        subgraph infra["数据层"]
-            db["PostgreSQL 17"]
-            cache["Redis<br/>第二阶段可接入"]
-        end
-    end
-
-    subgraph evolve["未来演进留白"]
-        obj["对象存储"]
-        mq["消息队列"]
-        es["搜索服务"]
-        worker["异步任务 Worker"]
-        sso["企业 SSO / 身份接入"]
-    end
-
-    c1 --> reverse
-    c2 -. "后续接入" .-> reverse
-    reverse --> fe
-    reverse --> be
-    be --> db
-    be -. "会话 / 缓存 / 限流" .-> cache
-
-    be -. "附件 / 资源" .-> obj
-    be -. "事件驱动" .-> mq
-    mq -. "消费" .-> worker
-    be -. "搜索索引" .-> es
-    be -. "统一身份" .-> sso
-```
+![V1 部署与演进留白图](../assets/frontend-learning-v1-deployment-architecture.svg)
 
 图示说明：
 
