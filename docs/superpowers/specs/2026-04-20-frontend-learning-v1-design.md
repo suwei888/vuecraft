@@ -3,6 +3,7 @@
 **日期：** 2026-04-20
 
 **适用范围：**
+
 - 当前仓库 `vuecraft` 的第一阶段重构
 - 产品第一阶段仅聚焦“前端学习模块”
 - 后续平台扩展到后端、运维、数据库、架构等学科时，继续复用本设计中的领域边界与信息架构原则
@@ -417,7 +418,135 @@
 - 提前拆微服务会引入不必要的分布式复杂度
 - 模块化单体更适合快速验证产品方向
 
-### 7.5 未来演进预留
+### 7.5 V1 逻辑架构图
+
+```mermaid
+flowchart LR
+    user["用户"]
+
+    subgraph access["访问入口"]
+        browser["PC / 移动浏览器"]
+    end
+
+    subgraph edge["接入层"]
+        nginx["Nginx / CDN"]
+    end
+
+    subgraph frontend["前端应用层"]
+        portal["公开门户<br/>Vue 3 + TypeScript + Vite"]
+        workspace["学习工作台<br/>Vue 3 + TypeScript + Vite"]
+        admin["内容管理台<br/>后续预留"]
+    end
+
+    subgraph backend["后端模块化单体"]
+        api["API / BFF"]
+        auth["认证与会话"]
+        tenant["租户与成员"]
+        content["内容与路线"]
+        learning["学习记录"]
+        project["项目实战"]
+        permission["角色权限"]
+        audit["审计日志"]
+        async["异步任务边界<br/>后续预留"]
+    end
+
+    subgraph data["数据与基础设施"]
+        pg["PostgreSQL 17"]
+        redis["Redis<br/>第二阶段可接入"]
+        object["对象存储<br/>后续预留"]
+        search["搜索索引<br/>后续预留"]
+    end
+
+    user --> browser
+    browser --> nginx
+    nginx --> portal
+    nginx --> workspace
+    nginx -. "管理入口" .-> admin
+
+    portal --> api
+    workspace --> api
+    admin -. "后续接入" .-> api
+
+    api --> auth
+    api --> tenant
+    api --> content
+    api --> learning
+    api --> project
+    api --> permission
+    api --> audit
+    api -. "事件 / 定时任务" .-> async
+
+    auth --> pg
+    tenant --> pg
+    content --> pg
+    learning --> pg
+    project --> pg
+    permission --> pg
+    audit --> pg
+
+    learning -. "缓存 / 会话 / 限流" .-> redis
+    content -. "素材 / 附件" .-> object
+    content -. "全文检索" .-> search
+```
+
+图示说明：
+
+- 当前阶段只有一个前端主应用也可以落地，但产品形态上仍然区分“公开门户”和“学习工作台”两种体验层。
+- 后端虽然部署为单体，但领域上已经按认证、租户、内容、学习记录、项目、权限、审计拆清边界。
+- Redis、对象存储、搜索索引在第一阶段不是强制依赖，但从架构图上提前预留，后续接入时不需要改产品边界。
+
+### 7.6 V1 部署与演进留白图
+
+```mermaid
+flowchart TB
+    subgraph client["客户端"]
+        c1["Web 浏览器"]
+        c2["后续：移动端 / 小程序"]
+    end
+
+    subgraph deploy["V1 部署形态"]
+        reverse["Nginx 反向代理"]
+
+        subgraph app["应用容器 / 进程"]
+            fe["前端静态资源"]
+            be["Spring Boot 模块化单体"]
+        end
+
+        subgraph infra["数据层"]
+            db["PostgreSQL 17"]
+            cache["Redis<br/>第二阶段可接入"]
+        end
+    end
+
+    subgraph evolve["未来演进留白"]
+        obj["对象存储"]
+        mq["消息队列"]
+        es["搜索服务"]
+        worker["异步任务 Worker"]
+        sso["企业 SSO / 身份接入"]
+    end
+
+    c1 --> reverse
+    c2 -. "后续接入" .-> reverse
+    reverse --> fe
+    reverse --> be
+    be --> db
+    be -. "会话 / 缓存 / 限流" .-> cache
+
+    be -. "附件 / 资源" .-> obj
+    be -. "事件驱动" .-> mq
+    mq -. "消费" .-> worker
+    be -. "搜索索引" .-> es
+    be -. "统一身份" .-> sso
+```
+
+图示说明：
+
+- 第一阶段推荐的最小可用部署就是 `Nginx + 前端静态资源 + Spring Boot + PostgreSQL`。
+- Redis 不是第一天必须安装，但在会话、缓存、限流、热点查询场景中很快会有价值，因此建议在图中保留。
+- 对象存储、消息队列、搜索服务、Worker、企业身份接入全部作为第二阶段以后能力，不提前落地实现，但提前保留接入点。
+
+### 7.7 未来演进预留
 
 虽然当前不做微服务，但应从设计上预留以下能力：
 
